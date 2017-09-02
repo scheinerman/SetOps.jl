@@ -7,27 +7,27 @@ export powerset
 For sets `A` and `B`, `A-B` is the set of all elements of `A`
 that are not in `B`.
 """
-(-){T}(A::Set{T}, B::Set)::Set{T} = Set{T}(setdiff(A,B))
+(-)(A::Set, B::Set)::Set = Set(setdiff(A,B))
 
 """
 For sets `A` and `B`, `A+B` is the union of `A` and `B`.
 """
-(+){T}(A::Set{T}, B::Set)::Set{T} = Set{T}(union(A,B))
+(+)(A::Set, B::Set)::Set= Set(union(A,B))
 
 """
 For sets `A` and `B`, `A|B` is the union of `A` and `B`.
 """
-(|){T}(A::Set{T}, B::Set)::Set{T} = Set{T}(union(A,B))
+(|)(A::Set, B::Set)::Set = Set(union(A,B))
 
 """
 For sets `A` and `B`, `A&B` is the intersection of `A` and `B`.
 """
-(&){T}(A::Set{T}, B::Set)::Set{T} = Set{T}(intersect(A,B))
+(&)(A::Set, B::Set)::Set = Set(intersect(A,B))
 
 """
 For sets `A` and `B`, `A\$B` is the symmetric difference of `A` and `B`.
 """
-($){T}(A::Set{T}, B::Set)::Set{T} = Set{T}(symdiff(A,B))
+($)(A::Set, B::Set)::Set = Set(symdiff(A,B))
 
 """
 For sets `A` and `B`, `A*B` is the Cartesian product, i.e., the

@@ -1,6 +1,6 @@
 # SetOps
 
-The purpose of this module is to provide easily typed operation
+This module provides easily typed operation
 (infix) symbols for common set operations.
 
 ## Operations
@@ -45,15 +45,38 @@ julia> A$B
 julia> A*B
 {(1,3),(1,4),(1,5),(1,6),(2,3),(2,4),(2,5),(2,6),(3,3),(3,4),(3,5),(3,6),(4,3),(4,4),(4,5),(4,6),(5,3),(5,4),(5,5),(5,6)}
 
-julia> powerset(B)
-{{3,4},{},{4,5},{3,5},{3,5,6},{4,5,6},{6},{3,4,6},{3},{4},{5},{3,4,5},{3,4,5,6},{5,6},{4,6},{3,6}}
+julia> powerset(Set(1:3))
+{{2},{3},{},{2,3},{1,2,3},{1},{1,3},{1,2}}
+```
+
+## Mixed types
+
+Operations on sets of two different types work nicely. Here
+are some examples.
+
+```julia
+julia> A = Set(1:3); typeof(A)
+Set{Int64}
+
+julia> B = Set([3.0, 4.5]); typeof(B)
+Set{Float64}
+
+julia> A|B
+{1,2,3.0,4.5}
+
+julia> A-B
+{1,2}
+
+julia> typeof(A&B)
+Set{Int64}
+
+julia> typeof(A|B)
+Set{Real}
 ```
 
 
-## Note
+
+## Limitation
 
 These functions do *not* work for sets of type `IntSet`
-(but are find for sets of type `Set{Int}`). At the moment,
-I don't have the interest to code all the cases where
-one or both of `A` or `B` is an `IntSet`, but welcome
-that contribution.
+(but work fine for sets of type `Set{Int}`).
