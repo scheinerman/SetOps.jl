@@ -1,9 +1,7 @@
 module SetOps
 
-
-import Base.(+), Base.(-), Base.(*)
+import Base: (+), (-), (*), (|), ($), (&)
 export powerset
-
 
 """
 For sets `A` and `B`, `A-B` is the set of all elements of `A`
@@ -11,14 +9,25 @@ that are not in `B`.
 """
 (-){T}(A::Set{T}, B::Set)::Set{T} = Set{T}(setdiff(A,B))
 
-
-
 """
 For sets `A` and `B`, `A+B` is the union of `A` and `B`.
 """
 (+){T}(A::Set{T}, B::Set)::Set{T} = Set{T}(union(A,B))
 
+"""
+For sets `A` and `B`, `A|B` is the union of `A` and `B`.
+"""
+(|){T}(A::Set{T}, B::Set)::Set{T} = Set{T}(union(A,B))
 
+"""
+For sets `A` and `B`, `A&B` is the intersection of `A` and `B`.
+"""
+(&){T}(A::Set{T}, B::Set)::Set{T} = Set{T}(intersect(A,B))
+
+"""
+For sets `A` and `B`, `A\$B` is the symmetric difference of `A` and `B`.
+"""
+($){T}(A::Set{T}, B::Set)::Set{T} = Set{T}(symdiff(A,B))
 
 """
 For sets `A` and `B`, `A*B` is the Cartesian product, i.e., the
@@ -26,7 +35,6 @@ set of all ordered pairs `(a,b)` with `a` chosen from `A` and
 `b` chosen from `B`.
 """
 (*){S,T}(A::Set{S}, B::Set{T})=Set{Tuple{S,T}}((a,b) for a in A for b in B)
-
 
 """
 `powerset(A)` is the set of all subsets of the set `A`.
