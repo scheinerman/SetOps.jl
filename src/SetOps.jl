@@ -1,7 +1,7 @@
 module SetOps
 
-import Base: (+), (-), (*), (|), ($), (&)
-export powerset
+import Base: (+), (-), (*), (|), (&)
+export powerset, ($)
 
 """
 For sets `A` and `B`, `A-B` is the set of all elements of `A`
@@ -34,12 +34,12 @@ For sets `A` and `B`, `A*B` is the Cartesian product, i.e., the
 set of all ordered pairs `(a,b)` with `a` chosen from `A` and
 `b` chosen from `B`.
 """
-(*){S,T}(A::Set{S}, B::Set{T})=Set{Tuple{S,T}}((a,b) for a in A for b in B)
+(*)(A::Set{S}, B::Set{T}) where {S,T}=Set{Tuple{S,T}}((a,b) for a in A for b in B)
 
 """
 `powerset(A)` is the set of all subsets of the set `A`.
 """
-function powerset{T}(A::Set{T})::Set{Set{T}}
+function powerset(A::Set{T})::Set{Set{T}} where T
     if length(A) == 0
         return Set([Set{T}()])
     end

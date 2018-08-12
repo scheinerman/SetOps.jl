@@ -1,4 +1,4 @@
-using Base.Test
+using Test
 using SetOps
 
 A = Set(1:5)
