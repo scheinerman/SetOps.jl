@@ -18,7 +18,7 @@ Here, `A` and `B` are objects of type `Set`.
 * **Intersection**: `A&B`.
 * **Set difference**: `A-B`.
 * **Symmetric difference**: `A$B`.
-* **Cartesian product**: `A*B`.
+* **Cartesian product**: Either `A*B` or `A×B`.
 
 We also provide `powerset(A)` which yields the
 set of all subsets of `A`.
@@ -27,7 +27,7 @@ set of all subsets of `A`.
 
 The nice output seen here is thanks to the use of the `ShowSet`
 module.
-```julia
+```
 julia> A = Set(1:5)
 {1,2,3,4,5}
 
@@ -61,7 +61,7 @@ julia> powerset(Set(1:3))
 Operations on sets of two different types work nicely. Here
 are some examples.
 
-```julia
+```
 julia> A = Set(1:3); typeof(A)
 Set{Int64}
 
@@ -85,5 +85,5 @@ Set{Real}
 
 ## Limitation
 
-These functions do *not* work for sets of type `IntSet`
+These functions do *not* work for sets of type `BitSet`
 (but work fine for sets of type `Set{Int}`).

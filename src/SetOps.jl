@@ -7,34 +7,36 @@ export powerset, ($)
 For sets `A` and `B`, `A-B` is the set of all elements of `A`
 that are not in `B`.
 """
-(-)(A::Set, B::Set)::Set = Set(setdiff(A,B))
+(-)(A::Set, B::Set)::Set = setdiff(A,B)
 
 """
 For sets `A` and `B`, `A+B` is the union of `A` and `B`.
 """
-(+)(A::Set, B::Set)::Set= Set(union(A,B))
+(+)(A::Set, B::Set)::Set= union(A,B)
 
 """
 For sets `A` and `B`, `A|B` is the union of `A` and `B`.
 """
-(|)(A::Set, B::Set)::Set = Set(union(A,B))
+(|)(A::Set, B::Set)::Set = union(A,B)
 
 """
 For sets `A` and `B`, `A&B` is the intersection of `A` and `B`.
 """
-(&)(A::Set, B::Set)::Set = Set(intersect(A,B))
+(&)(A::Set, B::Set)::Set = intersect(A,B)
 
 """
 For sets `A` and `B`, `A\$B` is the symmetric difference of `A` and `B`.
 """
-($)(A::Set, B::Set)::Set = Set(symdiff(A,B))
+($)(A::Set, B::Set)::Set = symdiff(A,B)
 
 """
-For sets `A` and `B`, `A*B` is the Cartesian product, i.e., the
+For sets `A` and `B`, `A*B` [also `A×B`] is the Cartesian product, i.e., the
 set of all ordered pairs `(a,b)` with `a` chosen from `A` and
 `b` chosen from `B`.
 """
 (*)(A::Set{S}, B::Set{T}) where {S,T}=Set{Tuple{S,T}}((a,b) for a in A for b in B)
+(×)(A::Set,B::Set) = A*B
+
 
 """
 `powerset(A)` is the set of all subsets of the set `A`.
