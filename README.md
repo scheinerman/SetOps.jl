@@ -1,6 +1,6 @@
 # SetOps
 
-[![Build Status](https://travis-ci.org/scheinerman/SetOps.jl.svg?branch=master)](https://travis-ci.org/scheinerman/SetOps.jl)
+[![Build Status](https://travis-ci.com/scheinerman/SetOps.jl.svg?branch=master)](https://travis-ci.com/scheinerman/SetOps.jl)
 
 [![Coverage Status](https://coveralls.io/repos/scheinerman/SetOps.jl/badge.svg?branch=master&service=github)](https://coveralls.io/github/scheinerman/SetOps.jl?branch=master)
 
